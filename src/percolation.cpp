@@ -26,7 +26,7 @@ bool Percolation::is_full(int row, int col) {
 }
 
 int Percolation::number_of_open_sites() {
-    return 0;
+    return this->union_find_.count()
 }
 
 bool Percolation::percolates() {

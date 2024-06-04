@@ -8,4 +8,5 @@ add_executable(percolation main.cpp
         src/include/percolation.h
         src/include/quick-find.h
         src/include/quick-union.h
-        src/include/quick-weighted-union.h)
+        src/include/quick-weighted-union.h
+        src/include/union-find.h)
