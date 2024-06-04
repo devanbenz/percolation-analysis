@@ -7,8 +7,10 @@ private:
     int grid_size_;
     std::vector<int> grid_;
     UnionFind union_find_;
+    std::vector<int> virtual_top_;
+    std::vector<int> virtual_bottom_;
 public:
-    explicit Percolation(int n);
+    explicit Percolation(int n, UnionFind uf);
 
     ~Percolation() = default;
 
@@ -23,4 +25,8 @@ public:
     bool percolates();
 
     void print_grid();
+
+    void print_top();
+
+    void print_bottom();
 };

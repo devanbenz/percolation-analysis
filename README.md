@@ -18,4 +18,6 @@ Can be modeled as:
 
 ![percolates-yes.png](percolates-yes.png)
 
+`Virtual Top`
 
+`Virtual Bottom`
