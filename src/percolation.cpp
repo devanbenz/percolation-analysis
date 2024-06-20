@@ -26,7 +26,7 @@ bool Percolation::is_full(int row, int col) {
 }
 
 int Percolation::number_of_open_sites() {
-    return this->union_find_.count();
+    return this->union_find_->count();
 }
 
 bool Percolation::percolates() {
@@ -58,9 +58,10 @@ void Percolation::print_bottom() {
     }
 }
 
-Percolation::Percolation(int n, UnionFind uf) : grid_size_(n), union_find_(std::move(uf)) {
+Percolation::Percolation(int n, std::unique_ptr<UnionFind> &&uf) : grid_size_(n), union_find_(std::move(uf)) {
     std::vector<int> grid = {};
-    grid.reserve(n);
+    grid.reserve(n * n);
+
     for (int i = 0; i < n * n; i++) {
         if (i < n) {
             this->virtual_top_.push_back(i);
@@ -70,8 +71,9 @@ Percolation::Percolation(int n, UnionFind uf) : grid_size_(n), union_find_(std::
             this->virtual_bottom_.push_back(i);
         }
 
-        grid.push_back(0);
+        grid.push_back(i);
     }
 
     this->grid_ = grid;
+    this->union_find_->set_components(std::make_shared<std::vector<int>>(this->grid_));
 }

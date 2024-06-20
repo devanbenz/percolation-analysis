@@ -1,18 +1,17 @@
 #include <iostream>
 #include "src/include/percolation.h"
+#include "src/include/quick-find.h"
 
 int main() {
-    Percolation p(20);
-    p.open(1,1);
-    p.open(2,3);
-    p.open(4,3);
-    p.open(1,4);
+    std::unique_ptr<UnionFind> qf = std::make_unique<QuickFind>(5);
+    qf->connect(2, 3);
+    qf->print();
+    qf->connect(2, 4);
+    qf->print();
+    qf->connect(3, 7);
+    qf->print();
+    qf->connect(13, 22);
+    qf->print();
 
-    p.print_grid();
-
-    std::cout << "\n\n";
-    p.print_top();
-    std::cout << "\n\t----\t\n";
-    p.print_bottom();
     return 0;
 }

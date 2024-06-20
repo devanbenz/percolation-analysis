@@ -6,11 +6,11 @@ class Percolation {
 private:
     int grid_size_;
     std::vector<int> grid_;
-    UnionFind union_find_;
+    std::unique_ptr<UnionFind> union_find_;
     std::vector<int> virtual_top_;
     std::vector<int> virtual_bottom_;
 public:
-    explicit Percolation(int n, UnionFind uf);
+    explicit Percolation(int n, std::unique_ptr<UnionFind> &&uf);
 
     ~Percolation() = default;
 
